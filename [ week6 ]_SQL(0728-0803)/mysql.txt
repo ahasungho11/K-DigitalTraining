@@ -1,0 +1,142 @@
+< mysql >
+================================
+show databases;
+use OOOOOOO;
+
+create DATABASE testdb;
+use testdb;
+================================
+================================
+================================
+
+================================
+
+================================
+
+================================
+< date(), time(), between A and B >
+# date함수를 써야 일반적으로 생각하는 해당 일자 ~23:59:59까지의 자료를 뽑아냄
+# cf) 앞서 봤던 rental_date 자체로 하면 사실상 하루 전날의 23:59:59까지 나온다는 것!
+# cf) 만약 between으로 쓰면 원하는 대로 나오겠징
+# => 결국 
+# -> 구분해서 잘 쓸 것
+
+# 명확하게 날짜'만' 뽑아서 정확하게 비교하려면 
+# where date(rental_date) between '2005-06-14' and '2005-06-16';
+# -> date()를 씌워주는 것이 좋음
+================================
+< in / not in >
+where A not in (~) : ~이 없는 A
+where A in (~) : ~이 있는 A
+================================
+< Null 확인 방법 >
+where return_date is null;
+<->
+where return_date is not null;
+================================
+‘^[QY]’: Q 또는 Y로 시작하는 단어 검색
+regexp : 정규식~
+
+select last_name, first_name
+from customer
+where last_name REGEXP '^[QY]';
+================================
+order by 다음에 정렬 기준이 되는 컬럼의 순서(index)를 사용
+~ order by 1 desc;
+=> mysql은 젤 앞의 컬럼부터 1~
+================================
+< GROUP BY >
+열(column)의 데이터를 그룹화
+< HAVING >
+특정 열을 그룹화한 결과에 조건을 설정 (그룹화 이후에 수행되는 조건)
+ cf) WHERE: 그룹화 하기 전 필터링 조건
+================================
+distinct 키워드 사용: 중복 제거
+- select distinct actor_id from film_actor order by actor_id;
+================================
+Select절에 추가할 수 있는 항목
+§ 숫자 또는 문자열
+§ 표현식
+§ 내장 함수 호출 및 사용자 정의 함수 호출
+
+
+# 없는 컬럼을 임의로 생성할 수도 있음
+# 가상 컬럼들을 select를 해서 생성할 수 있음 (숫자or문자열, 표현식, 내장 함수 호출 및 사용자 정의 함수 호출)
+# -> language usage, lang_pi_value 두개는 컬럼은 원래 없었는데, select 하면서 생성된 것
+# -> DF에서 없는 컬럼명을 입력하면 자동으로 끝에 생성되는 것과 비슷 (or insert로 원하는 곳에 삽입하는)
+# -> 각각은 입력한 대로 데이터가 들어간 것이고
+
+
+select language_id,
+'COMMON' language_usage,
+language_id * 3.14 lang_pi_value,
+upper(name) language_name
+from language;
+================================
+create table OOO (
+CONSTRAINT 제약조건이름 PRIMARY KEY (필드이름)
+CONSTRAINT 제약조건이름 foreign key (필드이름) references 테이블이름(필드이름)
+);
+
+desc person;
+================================
+
+사용 가능한 데이터베이스 확인
+show databases;
+
+샤키라 데이터베이스 선택
+use sakila;
+
+현재 날짜와 시간 정보 출력 쿼리
+select now();
+
+캐릭터셋
+show character set;
+
+숫자 키 데이터 생성 ( 자동 증가(auto-increment) 기능 제공 )
+set foreign_key_checks=0; # 제약 조건 비활성화
+alter table person modify person_id smallint unsigned auto_increment;
+set foreign_key_checks=1; # 제약 조건 활성화
+================================
+데이터 추가
+insert into person
+(person_id, fname, lname, eye_color, birth_date)
+values (null, 'William', 'Turner', 'BR', '1972-05-27');
+-> null이라도 자동으로 숫자 카운팅
+
+데이터 확인I (select)
+SELECT * FROM 테이블이름;
+
+데이터 확인II (select + where)
+select person_id, fname, lname, birth_date
+from person where lname = 'Turner';
+
+데이터 추가
+i)
+insert into favorite_food (person_id, food)
+values (1, 'pizza');
+
+ii)
+insert into favorite_food (person_id, food)
+values (1, 'pizza'), (1, 'cookie'), (1, 'nachos');
+
+select food from favorite_food
+where person_id = 1 order by food;   (food asc; /  food desc;)
+
+데이터 수정
+update person
+set street = '1225 Tremon St.’,
+city = 'Boston’,
+state = 'MA’,
+country = 'USA’,
+postal_code = '02138'
+where person_id=1;
+
+데이터 삭제
+DELETE FROM 테이블이름 WHERE 필드이름=데이터값;
+
+테이블 삭제
+DROP TABLE 테이블이름;
+
+
+

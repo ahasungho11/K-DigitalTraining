@@ -1,0 +1,25 @@
+0729
+오전1)
+서비스 - mysql - 시작 자동으로 되는 설정 찾아보기
+
+# 데이터 import 하기
+해당 테이블 우클릭 > 데이터 가져오기 > 어느 DB에 넣을지만 정해서 죽 진행
+
+-- select 
+-- from
+-- where 
+-- group by
+-- having
+-- order by
+
+-- from 
+-- on
+-- join 
+-- where
+-- group by
+-- cube | rollup
+-- having
+-- select
+-- distinct
+-- order by
+-- top

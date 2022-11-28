@@ -1,0 +1,77 @@
+0714
+특강
+======================================
+오전1)
+https://data.kma.go.kr/cmmn/main.do
+-> 기상자료 개방 포털
+
+기후통계분석 > 기온분석 > 검색조건 > 파일 다운
+
+- 공공데이터는 대부분 csv 제공을 하고 있지요
+- notepad++ 다운 (읽는 에디터)
+
+- 분석전 파일의 구조부터 파악
+- 헤드부분도 봐주고
+- 간단한 전처리 과정 필요
+
+- 문자열 -> 숫자(실수, 정수)
+- 엑셀에서 제거하는 것도 편하고
+ -> 불필요한 행 날리고
+
+- 빈 데이터 확인  => 처리해야 하지요 (전처리 과정)
+ -> 파이썬으로 빈 데이터처리
+ -> 판다스로 빈 데이터 처리
+
+# 14 문자열을 일일이 float로 변환했지만
+# 15 한꺼번에 바꿔준 것  max_temp~astype(float)
+
+======================================
+
+1. import csv
+csv.reader(csvfile, delimiter)
+dsv.writer(csvfile, delimiter)
+delimiter는 CSV 파일이 뭘로 나누어져 있는지(\t, ' ', '+' 등)를 나타낸다.
+
+2. 파일 열고, 닫기
+i) f = open()
+  f.close()
+ii) with open() as f:
+
+3. 마이너스 기호 깨짐 방지
+plt.rc('axes', unicode_minus=False)
+
+4. 한글 깨짐 방지
+plt.rc('font', family='Malgun Gothic')
+
+5. 운영체제 플랫폼 구분
+import platform()
+system_name = platform.system()
+# 운영체제를 구분할 수 있음
+
+if system_name == 'Windows':
+    print('Wndows OS')
+    plt.rc('font', family = 'Malgun Gothic')
+    
+elif system_name == 'Darwin':
+    print('Mac OS')
+    plt.rc('font', family = 'AppleGothic')
+    
+elif system_name == 'Linux':
+    print('Linux OS')
+    path = '/usr/share/fonts/truetype/nanum/NanumMyeongjo.ttf'
+    font_name = fm.FontProperties(fname=path, size=12) 
+    plt.rc('font', family=font_name)
+else:
+    print("Not support")
+
+6. 누락값 개수 구하기
+num_rows = weather_df.shape[0]               
+num_missing = num_rows - weather_df.count() 
+print(num_missing)
+
+7. groupby(컬럼명).mean()  => 요로케 쓴다는 것 숙지!!
+choice_month_df = choice_month_df.groupby(0).mean()
+# 그룹바이 할때 ''안 쓰는 것 인지!, 집계함수 쓸 때도 주의 !!
+
+
+
