@@ -1,0 +1,213 @@
+{
+  "main": {
+    "id": "42f32c8357cfd5cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "35567e49de7b66d5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6aa2a9cb0bccc484",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. handover/00_작성문서 List.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2c50a0284fdadd76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2. handover/01_My Checklist.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ee85526734fdc4d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_TP_4주차(221118~221124).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f476a55006af6ad0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/02. git 활용 익숙해지기.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7ee8781ab6cc444b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3. Z_프로젝트 후_복귀/02. Obs_기능숙지/Obs_마크다운.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "92736748543bf42f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "11.25 + 11.28~.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "40e4b202db60dd1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "958bee9036881858",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a69c4c0784d93a06",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "09e44f685df4c140",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b83d6681d2cad75a",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 358.5
+  },
+  "right": {
+    "id": "0235d0665d425284",
+    "type": "split",
+    "children": [
+      {
+        "id": "0cf8ce7840412fec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "222b51872b4218a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/02. git 활용 익숙해지기.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ba7c9acedb00a037",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/02. git 활용 익숙해지기.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "56fe5104213e0b33",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "7231995f3073e247",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/02. git 활용 익숙해지기.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "active": "f476a55006af6ad0",
+  "lastOpenFiles": [
+    "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/03. git 푸시 적용안될 때.md",
+    "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/02. git 활용 익숙해지기.md",
+    "4. 확실히 정리하고 폴더에 넣을 것들/99. git활용하기/01. git_레포지토리 연결.md",
+    "11.25 + 11.28~.md",
+    "무제파일.md",
+    "221121(월) ~ 221125(금).md",
+    "00_TP_4주차(221118~221124).md",
+    "998_(정리필!).md",
+    "3. Z_프로젝트 후_복귀/02. Obs_기능숙지/Obs_마크다운.md",
+    "2. handover/00_작성문서 List.md"
+  ]
+}
