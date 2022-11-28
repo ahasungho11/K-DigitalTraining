@@ -1,0 +1,5 @@
+< 모듈화 수집중 >
+
+1. enumerate(iterable자료)
+for i, data in enumerate(datas):
+

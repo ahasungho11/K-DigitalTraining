@@ -1,0 +1,11 @@
+< titanic >
+- 결측치 / 형변환
+- sex,  object => category
+- embarked,   object => category
+- survived,   
+- Pclass,  int => category
+
+- 사망자의 수 (좌석의 종류, 성별, 
+- 1,2,3 선실별 => 생존인원 => 몇명? 이런 느낌
+- 성별 => 생존인원 =>
+- cut

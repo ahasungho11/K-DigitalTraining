@@ -1,0 +1,14 @@
+0711
+오전1)
+- 타이타닉 생존율~ 과제 upload
+- 피벗도 활용해서 해봐
+- reference에 적힌 내용 (function, method 구분되어 있는 것도 인지)
+ -> 파라미트, 리턴값, 오류발생한 것까지도 다 봐주셈
+- 판다스 site > user guide
+- 넘파이 site > 튜토리얼 활용
+python, pandas, matplotlib, seaborn, numpy
+
+- 누구나~ 서적 인지할 것
+
+- sum(), mean(), std(), var(), min(), max() => 활용
+- 

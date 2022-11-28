@@ -1,0 +1,247 @@
+< 그래프 관련 >
+1. y축을 2개 쓰는 그래프
+
+* DF를 전처리하는 과정에서 그래프로 그릴 x값과 y값을 리스트에 다 담아둬야함
+
+1) x축, y축 지정 (=> 세 리스트 모두 len 떄리면 30으로 같은 상태임)
+x=D_list[12:]
+y1=num_list[12:]
+y2=np.log(corona_mean_list)
+
+1-1) 파레트 색깔 뽑아 오기 (리스트로 담김)
+colors=sns.color_palette('hls',2)
+
+2) 다중 플롯 지정
+fig, ax1 = plt.subplots(figsize=(18,6))
+
+2-1) y축 왼쪽 그래프 관련
+ax1.bar(x, y1, label='소비자물가총지수',alpha=0.4, color=colors[0])
+ **** 막대 그래프임 .bar()
+ **** 파라미터 순서 지켜야 함. 아니면 오류남
+ **** 해당 함수의 label은 그래프 안의 범례에 해당하는 것임
+      (입력 안하면 아래에서 .legend()를 해도 나타나는 것이 없음)
+ **** alpha= 값, 0이상 1이하 인 거 같음. 투명도라고 보면됨. 작을수록 옅어짐
+ax1.set_ylabel('소비자물가총지수')
+ **** 요것이 y축 이름이 되는 것임
+ax1.legend()
+ **** 위 bar()안에 적은 label명으로 범례가 생성됨
+
+plt.ylim(99, 110)
+ **** y축 값의 수치범위를 잘라준다
+plt.grid()
+ **** 배경의 격자를 만들어 줌
+
+
+2-2) y축 오른쪽 그래프 관련
+ax2 = ax1.twinx()
+ **** x축 공유
+
+ax2.plot(x, y2, label='코로나확진자수',color=colors[1])
+ **** 꺾은선 그래프임 .plot()
+ **** y2값에 맞춰서 y축 오른쪽 편 수치 범위가 자동 정해져서 나옴
+ax2.set_ylabel('코로나확진자수')
+ax2.legend(loc='upper left')
+ **** ax1그래프의 범례는 그 밑에 적어준 것이고
+ **** ax2 그래프의 범례는 여기에 적어준 것이지
+
+
+ax1.set_xlabel('날짜')
+ **** x축의 이름
+plt.xticks(x)
+plt.xticks()
+ **** x축에 각 값들에 눈금이 표시되어 나옴
+ **** labels 파라미터를 사용하면 눈금 레이블을 문자열의 형태로 지정
+cf) plt.xticks([0, 12, 40)
+ **** 인덱스로 생각하면 됨. x가 리스트로 되어 있기도 하고, 입력을 안해도 0번째/12번째/40번째 눈금 표시를 해줌
+
+plt.locator_params(axis='x', nbins=len(x)/2)
+ **** axis에 'x'나 'y'나 'both'(기본값)을 선택하여 해당 축에 표시되는 눈금의 간격을 조절하는 것 => x의 값이 10이라면 5개값마다 제일 앞에 축에 라벨이 표시됨
+ **** x축에 rotation을 줘서 x축 라벨이 다 들어가게 하는 것과 같은 맥락의 목적
+
+plt.axvline(x=25, ymin=0, ymax=1, color='red', alpha=0.6)
+ **** x축의 인덱스라고 생각하면 됨. x값으로 넣은 리스트에서 25번 값을 선택하여 y축 전체 길이를 1로 두고 표시할 선을 빨간색으로 0.6의 투명도로 긋는 것
+(ymin과 ymax값이 입력이 안되면 기본값은 0과 1 (그래프 y축 길이)
+
+plt.text(x=25, y=12, s='우-러 전쟁발발 ', fontsize=15, color='r', ha='right')
+ **** 위치는 위의 파라미터와 같음, s는 입력할 텍스트 내용, ha는 위치
+ (위치 조절은 가능x나 y를 따로 입력하지 않고도  0.55, 0.55 이런식으로 )
+ **** horizontalalignment or ha -> [ 'center' | 'right' | 'left' ]
+ **** verticalalignment or va -> [ 'center' | 'top' | 'bottom' | 'baseline' ]
+
+plt.axvspan(1, 6,  ymin= 0, ymax=0.8, color='orange', alpha=0.3)
+ **** x축의 인덱스라고 생각하고, x축 1번째부터 6까지, y축 길이만큼 범위로 오렌지 색깔로 0.3의 불투명도로 
+
+
+plt.title('소비자물가총지수-코로나 확진자수', fontsize=15)
+ **** 그래프 전체 제목
+plt.grid()
+ **** x축과 y축에 xticks와 yticks로 찍힌 눈금의 연장선이 격차처럼 그래프에 직선으로 표시됨
+ **** y축 왼쪽/y축 오른쪽 파라미터 입력하는 곳에 넣어줘야 해당 축에서의 눈금 연장선이 그어짐 (y축이 2개일 경우 주의)
+ **** plt.grid(True)와 같이 설정하면, 그래프의 x, y축에 대해 그리드가 표시
+       -> {‘both’, ‘x’, ‘y’} 중 선택할 수 있고 디폴트는 ‘both’
+ **** plt.grid(True, axis='x')
+ **** plt.grid(True, axis='y')
+
+plt.show()
+
+======================================================================================================
+
+2. 꺾은선 그래프
+1) x축, y축 지정
+x=abroad_date_list
+y1=abroad_E_list
+y2=abroad_A_list
+y3=abroad_C_list
+y4=num_list[:-1]
+
+ **** x, y1, y2는 30개  //  y3, y4는 41개인 상태임
+ **** 개수 맞춰야하는 것들 명확히 구분해서 그래프 그리는 것 주의!!
+
+plt.figure(figsize=(18,6))
+ **** 그래프 담을 피규어 사이즈
+
+plt.plot(x,y1, x,y2, x,y3)
+ **** 아래의 3개 꺾은선 입력 식을 한줄에 적은 것임
+ **** plt.plot(x,y1), plt.plot(x,y2), plt.plot(x,y3)
+
+plt.plot(x, y4, color='tomato', linewidth=3.0)
+ **** 아래의 2가지 코드를 합쳐 놓은 것이라고 보면 됨
+line=plt.plot(x,y4)
+plt.setp(line,'color', 'tomato', 'linewidth', 3.0)
+
+plt.xticks(x)
+ **** x축에 라벨 표시 (일 단위로 많은 데이터라 해도)
+plt.locator_params(nbins=len(x)/3)
+ **** 이 메서드를 통해 표시만 적게 하면 해결 될 것 같음
+ **** 데이터 프레임을 기간으로 자르는 고생을 덜할 것 같음
+
+plt.legend(['영국', '미국', '중국', '한국'])
+ **** 범례 원하는 이름으로 집어 넣기 (당연 개수는 맞춰야지)
+
+plt.grid()
+plt.show()
+
+##### 선 모양
+line=plt.plot(x,y4)
+plt.setp(line,'color', 'tomato', 'linewidth', 3.0)
+
+선 두께, 색깔 등 좀 더 다양한 조정을 위해서 setp() 명령어를 사용할 수 있다. setp() 명령어는 두 가지 사용 방법이 있다.
+
+예를 들어 다음과 같이 선을 다음과 같이 정의하였다면
+line = plt.plot(t, t**2)
+
+선의 모양을 바꾸는 방법은 다음 두가지 모두 가능하다.
+plt.setp(line, color='r', linewidth=3.0)
+plt.setp(line, 'color', 'r', 'linewidth', 3.0)
+
+color = 'r'와 같이 property = value 의 형태로 나타낼 수 있다. 그렇다면 property와 value의 종류를 간단히 알아보자.
+-> 아래 링크
+https://wikidocs.net/13574
+
+===================================================3. 그룹화 & 필요한 컬럼만 뽑아 -> 인덱스와 필요한 컬럼이렇게 나옴
+=> ex) 인덱스(날짜), 출력할 데이터(필요한 컬럼의 시리즈)가 나오게 하여 DF자체를 그래프에 넣어 출력
+
+plt.figure(figsize=(15, 10))
+plt.plot(oilDF_idx_2['종가'])
+plt.xticks(rotation = 45, fontsize=10)
+plt.xlabel('연월', fontsize=30)
+plt.show()
+===================================================
+4. 그래프에 선 일부 추가하기  => 필요할 때 그려보고 인자 조절
+import numpy as np
+import matplotlib.pyplot as plt
+
+X = np.linspace(0, 100, 100)
+Y1 = X**2
+Y2 = X**2+5000
+
+plt.plot(X,Y1)
+plt.plot(X,Y2)
+
+plt.gca().add_line(plt.Line2D((10,30),(1000,3000),color='r'))
+plt.show()
+===================================================5. 5. DF로 그래프 그리기
+fig, axes = plt.subplots(1, 2, figsize=(17, 10), sharex=True, sharey=True)
+ **** 1행 2열 (그래프의 개수), 크기, x축과 y축 공유 여부
+
+fig.suptitle('데이터 분류(음료)', fontsize=40)
+ **** subplot의 제목, 글자 크기
+
+
+plt.subplot(1, 2, 1)
+ **** 1행 2열 중 1자리에 위치
+
+plt.plot(epDF_1_t)
+ **** 인덱스(날짜) -> x축  //  필요한 데이터가 있는 컬럼 -> y축
+
+plt.xticks(rotation = 70, fontsize=10)
+ **** x축 라벨의 회전, 글자 크기
+
+plt.legend(epDF_1_t.columns, fontsize=10)
+ **** 해당 DF의 컬럼명들을 범례로, 범례 글자 크기
+
+plt.xlabel('연.월', fontsize=30)
+plt.ylabel('지수', fontsize=30)
+
+plt.subplot(1, 2, 2)
+ **** 1행 2열 중 2자리 위치
+
+plt.plot(epDF_1_t[['두유', '탄산음료', '차']])
+ **** 해당 DF의 인덱스는 x축, 나머지 컬럼들 중 필요한 '두유','탄산우유','차' 컬럼만 y축의 값으로 
+
+plt.xticks(rotation = 70, fontsize=10)
+plt.legend(epDF_1_t[['두유', '탄산음료', '차']].columns, fontsize=10)
+plt.xlabel('연.월', fontsize=30)
+
+plt.tight_layout()
+tight_layout(pad=1.08, h_pad=None, w_pad=None, rect=None)
+  이 함수는 자동으로 명시된 여백(padding)에 관련된 서브플롯 파라미터를 조정한다.
+  이 함수에서의 모든 키워드 인자는 선택적으로 입력 가능하다.
+  입력 없이 사용할 경우 기존에 세팅된 기본값을 이용하여 자동으로 레이아웃을 설정한다.
+
+- pad
+입력 형태: float
+figure의 모서리와 서브플롯의 모서리 사이의 여백(padding)을 설정한다.
+이 키워드 인자의 입력값은 폰트 크기와 여백간의 분율이다.
+기본값은 1.08이다. 
+
+- h_pad, w_pad
+입력 형태: float 
+서로 인접한 서브플롯(subplot)의 모서리(edge)간의 높이 및 너비의 여백을 설정한다.
+
+- h_pad는 높이의 여백을, w_pad는 너비의 여백을 설정한다. 
+기본값은 None이다.
+
+- rect
+입력 형태: tuple (left, bottom, right, top) 
+서브플롯을 넣기 위한 사각형을 설정하며 (왼쪽, 바닥쪽, 오른쪽, 위쪽)의 값을 입력 받는다.
+
+입력되는 값은 figure의 총 크기대비로 정규화된 값이다.
+
+기본값은 (0, 0, 1, 1)을 입력받는다.
+plt.show()
+===================================================
+6.  < y축 2개 쓰는 그래프 (왼쪽(막대), 오른쪽(꺾은선))>
+
+datas = [day_money, mon_money, year_money]
+views = sub_df['구독자수 [명]']
+
+colors = sns.color_palette('pastel', len(day)) ## 바 차트 색상 
+
+for data in datas:
+    fig = plt.figure(figsize=(20,8)) ## Figure 생성  
+    fig.set_facecolor('white')       ## Figure 배경색 지정 
+    
+    ax1 = fig.add_subplot()          ## axes 생성 
+    xtick_label_position = range(5)  ## x축 눈금 라벨이 표시될 x좌표 
+    ax1.set_xticks(xtick_label_position)               ## x축 눈금  
+    ax1.set_xticklabels(channel_data)                  ## x축 눈금 라벨 
+    ax1.bar(xtick_label_position, data, color=colors) ## 바차트 출력 
+    
+    color = 'blue' 
+    ax2 = ax1.twinx()                                 ## 새로운 axis 생성 
+    ax2.plot(xtick_label_position, views, color=color, linestyle='--', marker='o') ## 선 그래프
+    ax2.tick_params(axis='y', labelcolor=color)                                    ## 눈금 라벨 색상 지정 
+    plt.title('유튜브별 수익', fontsize=20) 
+    plt.show()
+
