@@ -1,0 +1,86 @@
+# ===== 분석 루틴 잡기 =======================================
+* 관측값
+* 특징변수
+ - 수치형 변수
+ - 범주형 변수
+ - 종속변수
+ - 독립변수
+
+
+
+
+
+
+
+
+
+# ===== 수집중  ============================================
+
+# 총 300개 중 10개 안팎으로 NA라면 날리는 판단도 괜찮
+# -> 수치 봐주고 (이상치라면 더더욱 ㅇㅋ)
+
+# 결측치 없애고 저장
+# pg <- na.omit(penguins)
+
+# 수염
+# - 이상치 확인, 서로의 절반수치 박스가 겹치는지 안겹치는지
+# - 3개중 2개 겹치는 항목이 다른 2개의 그래프 => 기준 섞어서 해보기도 하고
+
+pg <- data.frame(penguins)
+
+aggr(pg, numbers = T, prop = F)
+# 전체에 비해 결측치가 얼마 없으니 삭제해도 되겠넹?
+
+pg <- na.omit(pg)
+aggr(pg, numbers = T, prop = F)
+
+# 각종 정보 확인
+dim(pg)
+str(pg)
+table(pg$species)
+barplot(table(pg$species))
+
+table(pg$island)
+barplot(table(pg$island))
+
+table(pg$sex)
+barplot(table(pg$sex))
+
+# => 이정도면 범주의 특성은 어느정도 파악된 셈
+
+# 수치형 변수 4가지만
+str(pg[,3:6])
+summary(pg[,3:6])
+
+# 피어슨 상관계수 출력
+cor(pg$bill_length_mm, pg$bill_depth_mm)
+
+# 종을 구분하고, 피어슨 상관계수 출력
+cor(pg[pg$species == 'Adelie', ]$bill_length_mm,
+    pg[pg$species == 'Adelie', ]$bill_depth_mm)
+
+#=========================================================
+
+#-------------------------------------------------------------
+# 1) aggeregate()와 tapply() 활용
+#-------------------------------------------------------------
+# aggeregate()와 taaply()
+#  한꺼번에     한 변수만
+
+#-------------------------------------------------------------
+# 2) 이상치 발견 -> 해당 이상치가 어디에 있는가 찾기
+#-------------------------------------------------------------
+pg <- data.frame(pg)
+
+# 종별로 그룹화하고, Adelie에 속한 것만 담아
+adelie <- split(pg, pg$species)$Adelie
+# 위에서 가져온 DF기준으로로 이상치 검색
+outlier <- boxplot.stats(adelie$flipper_length_mm)$out
+# 해당 f~안에 outlier값이 있는가!?
+pg[pg$flipper_length_mm %in% outlier,]
+
+# DF니까 nrow로 개수 파악
+nrow(pg[pg$flipper_length_mm %in% outlier,])
+#-------------------------------------------------------------
+
+	

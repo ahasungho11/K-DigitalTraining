@@ -1,0 +1,83 @@
+1. 막대그래프 -------------------------------------------------------------------------------------
+## barplot(table(iris$Species)) 
+-> names : 바에 이름 
+
+2. 히스토그램 -------------------------------------------------------------------------------------
+## hist(iris Petal.Length, col = 'steelblue', breaks=20)
+-> col : 바 색깔 (color)      ---- orange, steelblue, tomato 
+-> main : 제목 (title)
+-> xlab : x축 제목 (xlabel)
+-> ylab : y축 제목 (ylabel)
+-> xlim : x축 범위 (xlim)
+-> ylim : y축 범위 (ylim)
+-> breaks : 막대 두께
+
+3. 산점도     -------------------------------------------------------------------------------------
+1)  plot(mtcars$mpg , mtcars$wt)
+
+=> plot(x축, y축)
+-> col
+-> pch : 그래프의 점 모양 바꾸기 (0~25까지)
+ => 0~14번(테두리색만 가능), 15~20번(채우기만 가능), 21~25번(둘다 가능)
+ => col(테두리색), bg(그래프의 점 안을 채우는 색깔)
+
+## plot(mtcars$mpg, mtcars$wt, pch = 24, col='tomato', bg='blue')
+
+** hist(벡터 이름), plot(벡터 이름) 벡터(일종의 배열)를 넣어줍니다.
+-> 두 함수의 차이점이라 하면
+-> hist는 x값이 숫자여야만
+-> plot은  숫자가 아닌 명목척도도 적용시킬 수 있다는 점
+
+
+2) 변수들 색깔 다르게
+my.color <- ifelse(pg$species == 'Gentoo', 'tomato',
+                   ifelse(pg$species == 'Adelie', 'steelblue', 'orange'))
+plot(pg$bill_length_mm, pg$bill_depth_mm, pch=19, col = my.color)
+
+2-1) 피어슨 상관계수 출력
+cor(pg$bill_length_mm, pg$bill_depth_mm)
+
+4. 다중 그래프 그리기  ------------------------------------------------------------------------
+# 수치형 변수 4가지를 한꺼번에 그리고자 한다면
+# 4분할해서 하나씩 그래프를 넣고 싶다!!
+
+i) 2x2
+par(mfrow = c(2,2))                      # partition
+hist(pg$bill_length_mm, col = 2:5)  # 검정색 빼고 해야징
+hist(pg$bill_depth_mm, col = c('orange', 'hotpink', 'skyblue'))
+hist(pg$flipper_length_mm)
+hist(pg$body_mass_g)
+par(mfrow = c(1,1))
+
+ii) 1x4
+# 히스토그램이니까 한줄에 보는게 더 나을 수도
+par(mfrow = c(1,4))                        # partition
+hist(pg$bill_length_mm, col = 1:3)    # 1:2:3 = 검:빨:초
+hist(pg$bill_depth_mm)
+hist(pg$flipper_length_mm)
+hist(pg$body_mass_g)
+par(mfrow = c(1,1))
+
+5. boxplot
+1) 단일 상자 그림
+boxplot(airquality$Ozone)
+
+1-1) 파라미터
+boxplot(airquality$Ozone,
+            main = "Mean ozone in parts per billion at Roosevelt Island",
+            xlab = "Parts Per Billion",
+            ylab = "Ozone",
+            col = "orange",
+            border = "brown",
+            horizontal = TRUE,         #수평 상자그림
+            notch = TRUE)              #Notch(파인 형태) 상자그림
+
+2) 다중 상자그림
+
+boxplot(Temp~Month,
+            data=airquality,
+            main="Different boxplots for each month",
+            xlab="Month Number",
+            ylab="Degree Fahrenheit",
+            col="orange",
+            border="brown")

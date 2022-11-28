@@ -1,0 +1,140 @@
+==========================================================
+*** 이항분포
+v <- rbinom(n=100000, size=1000, prob=0.5)
+hist(v, col = 'orange', breaks = 20)
+
+v2 <- rbinom(n=100000, size=1000, prob=0.4)
+hist(v2, col = 'orange', breaks = 20)
+
+*** 균등분포
+v <- runif(n=100, min=0, max=100)     -> 왜 균등x? 횟수늘려봐
+v <- runif(n=10000, min=0, max=100)  -> 균등해짐
+hist(v, col='tan1', breaks=30)
+
+# 평균은 50에 / 표준편차는 29에 근사
+mean(v)   /   sd(v)
+
+# 정규분포 곡선 그리기
+x <- seq(-3, 3, length=6)    # -3~3사이를 6구간으로 잘라
+x <- seq(-3, 3, length=100)  # 점점 부드러운 곡선이 되어감
+y <- dnorm(x, mean=50, sd =20)  # -3~3이 범위라서 이렇게 우상향 곡선 느낌
+plot(x,y, type = 'b', col = 'tan1', lwd = 3) # lwd : 선 두께, type='l', 'b'
+
+# rnorm / dnorm / pnorm / qnorm / qnorm (n , mean, sd)
+ - n은 특정수, 범위 모두 가능
+
+# 곡선
+x <- rbinom(10000, size=100, prob=0.5)
+
+hist(x, col = 'steelblue3')
+curve(dnorm(x,50,5), 25, 75, col='sienna',
+      add=T, lwd=3, lty=2)
+
+==========================================================
+
+< 써봐야할 것들, 보완해야될 함수들 >
+install.packages("stargazer")
+library('stargazer')
+stargazer(iris)
+
+summary(iris)
+
+with(survey, ~)
+survey에 $를 다 붙여 준다는 것 
+with(survey , tapply(Pulse , Sex , mean , na.rm T))
+    데이터셋명        각 컬럼들           결측치 삭제하면서
+
+**** 교차표 (cross table)
+: 두 변수의 '범주별' '빈도수'를 통해 범주형 변수 간의 '관계'를 파악
+
+**** 모자이크 플롯 (mosaicplot)
+: 2원 3원 교차표의 시각화
+: 전체 정사각 도형을 교차표의 행 빈도에 비례하는 직사각 도형으로 나누어 줍니다. 그 다음에, 다시 각도형을 행 내 열의 빈도에 해당하는 직사각 도형으로 나누어 줍니다.
+
+ex) 먼저 세로의 긴 직사각형의 넓이는 남성과 여성의 비율을 나타냅니다. 빨간색과 회색의 직사각형의 넓이는 합격자와 불합격자의 비율을 나타냅니다. 따라서 전체적으로 남성의 합격률이 여성보다 높다는 것을 알 수 있습니다. 이처럼 모자이크 플롯은 여러가지의 정보를 직사각형으로 나누어 표현할 수 있습니다. 
+
+**** gmodels
+
+** t.test()
+검정방법.가설검정을 한다
+
+** 
+
+
+
+- https://jjeongil.tistory.com/352
+=========================================================
+# matrix 형태로 데이터가 존재하는 경우
+hospital <- read.csv("hospital.csv")
+head(hospital)
+table(hospital)
+mosaicplot(~freq+stay, data = hospital, color=TRUE,            
+            main ="병원내원빈도vs치료기간")
+
+#
+mosaicplot(Titanic, color = TRUE, off=5)
+
+mosaicplot(Titanic, # 데이터 입력
+            main = "Survival on the Titanic", # 제목 설정
+            color = c("red","green"), # 색 지정
+            off=1) # 블럭들 사이의 간격 지정
+
+생존자를 초록색, 사망자를 빨간색으로 표현하였습니다. 이렇게 표현을 하니 더 눈에 잘 들어오지 않나요? 앞으로 데이터를 가시화하는데 있어서 이런 색 지정도 자주 활용한다면 좋은 데이터 분석을 할 수 있을 것입니다.
+
+=========================================================
+
+< 이론적 >
+귀무 - 집단 차이x   (like 부정적多, null, 無)
+대립 - 집단 차이o
+
+if) 검정 통계량[값]이
+작으면 유의미, 귀무 기각, 대립 채택
+크면 무의미, 귀무 채택, 대립 기각
+
+t-test(2집단) -> 3집단 불가 -> ANOVA, 분산분석
+
+=========================================================
+
+< 분석시 주의해야 될 사항들 + 참고tip >
+
+1. 변수의 통제 (대상 표본의 적합한 선택)
+ - 만약, 설문조사라면, 애초에 조사 목적에 적합한 표본(대상)들을 선정
+
+2. 표본 n=30을 맞췄으니 정규분포에 '유사'한 것
+-> but, 과연 신뢰할 수 있는가
+-> 신뢰도의 문제 => 95%
+
+<=> 95% 밖. 즉 5%에 해당하는 '유의확률'에 해당하는 case에 들어가는 것
+(통계 자체가 5% 오류를 인정하고 들어가는 것)
+
+3. 표준화(정규화)
+** 수학 70점과 영어 80점의 등수를 따져 어느 과목이 잘받은 것인지
+   기준을 동등하게 해서 비료를 해보고자 => 표준화
+
+4. 흔히 CDF의 모양을 보고 판단
+- 표준정규분포의 CDF 모양 숙지
+
+5. 내가 분석하고자 하는 dataset의 확률분포가
+  어느 확률분포에 속하는지 알고 있어야
+  유의미성을 따질 수 있는 것이지 (t-검정, F-검정, x^2검정, 표준정규분포 등) 
+
+=> [ t-분포/F-분포/x^2-분포 ] 각 분포를 따를 때
+n의 정도에 따라 t/fF/x^2 분포를 적용해서, 정규분포를 쓰는 것과 같은 효과
+
+6. library(tidyr)
+# wide format으로 바뀜
+wide.df <- spread(sleep, key = group, value = extra)
+
+# 평균차이는 있어 보이나, 유의미한 것인지는 확실치 않음
+summary(wide.df)
+
+# wide & tapply => 평균의 차이는 구분하기 쉬움
+tapply(sleep$extra, INDEX = list(sleep$group), FUN = mean)
+
+# long format인 경우
+t.test(extra~group, data = sleep, paired = T)
+
+# wide format인 경우 (``도 되네)
+t.test(wide.df$`1`, wide.df$`2`, paired = T)
+t.test(wide.df$'1', wide.df$'2', paired = T)
+

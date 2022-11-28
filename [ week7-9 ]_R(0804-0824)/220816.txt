@@ -1,0 +1,45 @@
+< Today (220816) >
+
+cmd로 콰트로 폴더 만들기
+프로젝트 만들기
+R에서 해당 프로젝트 경로로 R 프로젝트 만들기
+Rmd와는 달리 yml파일이 따로 있음
+
+about.qmd
+index.qmd
+-> 해당 파일 수정하면서 render하면서 파악하기
+
+특정사이트 링크하려면
+qmd파일 생성해서(Save as)
+
+https://quarto.org/docs/websites/
+
+깃허브 계정과 연동하여 웹사이트 만들기
+https://quartopub.com/
+
+(git과 연동한 상태)
+terminal에서 해당 프로젝트 폴더에 있는 상태에서
+
+quarto publish quarto-pub해서 퍼블리싱 go
+
+
+===============
+source, visual
+
+render
+
+** 콰르토 적응기
+ - 웹사이트 만들기 수월하지옹
+ - 영문사이트 파가면서 학습
+ - 웹사이트 하나 만들어서 양성과정의 기록
+ - git
+  => 여러가지 plan해보자!!!
+
+
+** 옵시디안 적응기
+
+
+< at CMD >
+cd \ => 루트 경로로
+mkdir 폴더명 => (해당 위치에서) 폴더 만들기
+
