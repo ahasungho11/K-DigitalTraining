@@ -1,0 +1,56 @@
+** 쌓이면 사이트 정리
+
+1. 기상자료 개방 포털
+- https://data.kma.go.kr/cmmn/main.do
+- 기후통계분석 > 기온분석 > 검색조건 > 파일 다운
+
+2. 대중교통 데이터 : t-money
+- https://pay.tmoney.co.kr/ncs/pct/ugd/ReadUgdMainGd.dev
+
+3. 행정안전부 홈페이지 : https://www.mois.go.kr
+: https://www.mois.go.kr/frt/a05/policyDataHome.do
+- 정책자료 > 주민등록 인구 통계 메뉴 선택
+ -> 인구 공공데이터
+
+4. 공공데이터 포털
+- https://www.data.go.kr/index.do
+ -> 공공보건 의료기관 현황 (검색)
+
+5. 국가통계 포털
+- http://kosis.kr
+
+6. e-나라지표
+- https://www.index.go.kr/
+
+7. 코로나 확진자 엑셀
+- http://ncov.mohw.go.kr/
+
+8. 한국은행 경제통계시스템
+- https://ecos.bok.or.kr/#/SearchStat
+
+9. 각종 경제지표
+- https://kr.investing.com/
+
+10. 관세청 (무역 통계 조회 등)
+- https://unipass.customs.go.kr/ets/index.do?menuId=ETS_MNU_00000103
+
+11. 플레이보드 (유튜브 순위)
+- https://playboard.co/
+
+12. 녹스 인플루언서 (인플루언서 데이터 분석 및 맞춤형 마케팅 서비스)
+- https://kr.noxinfluencer.com/
+
+13. 공연 예술 통합전산망
+- https://www.kopis.or.kr/por/main/main.do
+
+14. 보건복지부
+- http://www.mohw.go.kr/react/gm/sgm0101mn.jsp?PAR_MENU_ID=13&MENU_ID=13020101
+
+15. 사회보장위원회 > 사회보장통계
+- http://ssc.go.kr/sscstat/main.html
+
+16. 영화진흥위원회
+- https://www.kofic.or.kr/kofic/business/infm/introData.do
+
+17. 지방행정 인허가 데이터
+- https://www.localdata.go.kr/main.do
