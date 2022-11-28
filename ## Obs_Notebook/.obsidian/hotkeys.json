@@ -1,0 +1,26 @@
+{
+  "theme:use-light": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Insert"
+    }
+  ],
+  "theme:use-dark": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Delete"
+    }
+  ],
+  "editor:toggle-strikethrough": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ]
+}

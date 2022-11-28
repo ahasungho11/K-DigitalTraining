@@ -1,0 +1,144 @@
+{
+  "main": {
+    "id": "42f32c8357cfd5cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "39a29fcbd6066fd2",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "week14_Cloud/221017_클라우드5.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "40e4b202db60dd1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "958bee9036881858",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a69c4c0784d93a06",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "09e44f685df4c140",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b83d6681d2cad75a",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 332.5
+  },
+  "right": {
+    "id": "0235d0665d425284",
+    "type": "split",
+    "children": [
+      {
+        "id": "0cf8ce7840412fec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "222b51872b4218a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "week14_Cloud/221017_클라우드5.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ba7c9acedb00a037",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "week14_Cloud/221017_클라우드5.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "56fe5104213e0b33",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "7231995f3073e247",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "week14_Cloud/221017_클라우드5.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "39a29fcbd6066fd2",
+  "lastOpenFiles": [
+    "week14_Cloud/221014_클라우드4.md",
+    "@@ To do List.md",
+    "Obs_마크다운.md",
+    "test_index.md",
+    "Obs_기능숙지.md",
+    "week14_Cloud/221013_클라우드3.md",
+    "World_.md",
+    "week14_Cloud/221011_클라우드1.md",
+    "week14_Cloud/221012_클라우드2-1.md",
+    "week13_Project_Methodology/4) 최종 ppt 흐름.md"
+  ]
+}
